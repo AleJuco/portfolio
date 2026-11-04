@@ -1,0 +1,48 @@
+/* Quiet charcoal row: sticker in a round tile, label, and the number on the right. */
+.button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 3.9rem;
+  padding: 0.6rem 1.4rem 0.6rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s, border-color 0.2s;
+}
+/* On wider screens the rows run off the right edge, like tabs. */
+@media (min-width: 768px) {
+  .button {
+    width: 22rem;
+    border-right: 0;
+    border-radius: 12px 0 0 12px;
+  }
+}
+
+.button:hover,
+.button:focus-visible {
+  background: var(--surface-hover);
+  border-color: var(--line-strong);
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0.3rem;
+  border-radius: 50%;
+  background: var(--tile);
+  border: 1px solid var(--line);
+}
+
+.label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.index {
+  margin-left: auto;
+}

@@ -1,0 +1,46 @@
+/* soft shadow so the text stays readable over bright photos */
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.85), 0 0 12px rgb(0 0 0 / 0.5);
+}
+
+.medal {
+  flex-shrink: 0;
+  width: 3.4rem;
+  height: 3.4rem;
+  padding: 0.55rem;
+  border-radius: 50%;
+  background: var(--tile);
+  border: 1px solid var(--line);
+  transition: border-color 0.2s;
+}
+.badge:hover .medal {
+  border-color: var(--line-strong);
+}
+
+.label {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-soft);
+}
+
+.liveDot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 rgb(155 215 127 / 0.7);
+  animation: pulse 1.8s ease-out infinite;
+}
+
+@keyframes pulse {
+  to { box-shadow: 0 0 0 8px rgb(155 215 127 / 0); }
+}

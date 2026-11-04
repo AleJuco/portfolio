@@ -1,0 +1,19 @@
+/* Small round buttons with a hairline border; they turn white on hover. */
+.button {
+  display: grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 50%;
+  color: var(--text-soft);
+  background: #1c1c1f;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.button:hover,
+.button:focus-visible {
+  color: var(--bg);
+  background: var(--text);
+  border-color: var(--text);
+}

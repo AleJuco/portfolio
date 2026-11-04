@@ -1,0 +1,16 @@
+.scenery {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: radial-gradient(ellipse 70% 60% at 60% 30%, #222226, var(--bg));
+}
+
+/* light shading at the sides so the text stays readable, and a fade into the page below */
+.shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgb(22 22 24 / 0.55), transparent 30%, transparent 65%, rgb(22 22 24 / 0.5)),
+    linear-gradient(0deg, var(--bg), transparent 30%);
+}

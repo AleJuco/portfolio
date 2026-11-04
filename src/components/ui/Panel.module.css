@@ -1,0 +1,26 @@
+.panel {
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+/* Clickable cards brighten and lift a little on hover. */
+.link {
+  transition: translate 0.2s ease, background 0.2s, border-color 0.2s;
+}
+.link:hover,
+.link:focus-visible {
+  translate: 0 -3px;
+  background: var(--surface-hover);
+  border-color: var(--line-strong);
+}
+
+/* any image inside a clickable card zooms in slightly on hover */
+.link img {
+  transition: scale 0.4s ease;
+}
+.link:hover img,
+.link:focus-visible img {
+  scale: 1.04;
+}

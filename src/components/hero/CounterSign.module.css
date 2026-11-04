@@ -1,0 +1,62 @@
+.panel {
+  --cell-w: clamp(24px, 2.6vw, 42px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: fit-content;
+  margin-top: 1.25rem;
+  padding: 0.9rem 1.1rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.emblem {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.2rem;
+  border-radius: 50%;
+  background: var(--tile);
+}
+
+/* ---------- Counter ---------- */
+.odometer {
+  display: flex;
+}
+.cell {
+  position: relative;
+  width: var(--cell-w);
+  height: calc(var(--cell-w) * 1.3);
+  overflow: hidden;
+  font-size: calc(var(--cell-w) * 0.95);
+  font-weight: 500;
+  line-height: calc(var(--cell-w) * 1.3);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.reel {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(calc((10 + var(--d)) * -5%));
+  animation: roll 2.2s cubic-bezier(0.15, 0.8, 0.25, 1) both;
+  animation-delay: calc(0.4s + var(--i) * 0.12s);
+}
+.reel > span {
+  display: block;
+  height: calc(var(--cell-w) * 1.3);
+}
+
+@keyframes roll {
+  from { transform: translateY(0); }
+}

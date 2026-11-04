@@ -1,0 +1,280 @@
+/* ---------- intro row: blurb + buttons ---------- */
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.intro p {
+  max-width: 34rem;
+}
+
+/* white pill (like "Let's Go!") and an outlined one */
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, opacity 0.2s;
+}
+.primary {
+  background: var(--text);
+  color: var(--bg);
+}
+.primary:hover {
+  background: #fff;
+}
+.secondary {
+  color: var(--text-soft);
+  border: 1px solid var(--line-strong);
+}
+.secondary:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+.primary:disabled,
+.secondary:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.ok,
+.error {
+  min-height: 1.25rem;
+  margin-block: -0.75rem;
+  font-size: 0.95rem;
+}
+.ok {
+  color: var(--accent);
+}
+.error {
+  color: #ff9db0;
+}
+
+/* ---------- camera ---------- */
+.camera {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.viewfinder {
+  position: relative;
+  width: min(100%, 26rem);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #000;
+  border: 1px solid var(--line-strong);
+}
+/* the photo is cropped square, so the preview is too; mirrored like a mirror */
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+video.video {
+  scale: -1 1;
+}
+.video[hidden] {
+  display: none;
+}
+.cameraNote {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-soft);
+}
+.countdown {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 6rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 4px 24px rgb(0 0 0 / 0.5);
+  animation: pop 0.8s ease-out both;
+}
+@keyframes pop {
+  from { scale: 1.6; opacity: 0; }
+  30% { scale: 1; opacity: 1; }
+  to { opacity: 0.2; }
+}
+.flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  pointer-events: none;
+  animation: flash 0.5s ease-out both;
+}
+@keyframes flash {
+  from { opacity: 0.9; }
+  to { opacity: 0; }
+}
+.cameraBar {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* ---------- the board ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* two to a row on phones */
+  gap: 1.75rem 1.25rem;
+  padding: 1rem 0.25rem;
+}
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    gap: 2rem 1.5rem;
+  }
+  .small {
+    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+/* off-white instant-photo frame, a little crooked, straightens up on hover */
+.polaroid {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.6rem 0.6rem 0.9rem;
+  background: #f1f0ec;
+  border-radius: 4px;
+  box-shadow: 0 10px 24px rgb(0 0 0 / 0.35);
+  rotate: var(--tilt);
+  transition: rotate 0.25s ease;
+}
+.polaroid:hover,
+.polaroid:focus-within {
+  rotate: 0deg;
+}
+.tape {
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  width: 3.5rem;
+  height: 1.2rem;
+  translate: -50% 0;
+  rotate: -4deg;
+  background: rgb(155 215 127 / 0.55);
+  border-radius: 2px;
+}
+.photo {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #d9d8d3;
+}
+.photo img {
+  object-fit: cover;
+}
+.date {
+  color: #6b6b72;
+  text-align: center;
+}
+
+/* ---------- your controls (signed in) ---------- */
+.controls {
+  position: absolute;
+  top: -0.7rem;
+  right: -0.7rem;
+  display: flex;
+  gap: 0.35rem;
+}
+.approve,
+.delete {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  color: #1f1a24;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.35);
+  cursor: pointer;
+  transition: scale 0.15s;
+}
+.approve {
+  background: var(--accent);
+}
+.delete {
+  background: #ff9db0;
+}
+.approve:hover,
+.delete:hover {
+  scale: 1.1;
+}
+
+.tray {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: 14px;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 3rem 1rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: 14px;
+}
+
+.manage {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.manage:hover {
+  opacity: 1;
+}
+
+.signIn {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+.signIn input {
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+}
+.signIn .error {
+  width: 100%;
+  margin: 0;
+  text-align: right;
+}
+
+.loading {
+  height: 12rem;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
